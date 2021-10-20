@@ -1,0 +1,81 @@
+#Обновление системы:
+sudo apt update
+sudo apt upgrade -y
+sudo apt install snapd
+sudo apt install ubuntu-restricted-extras libavcodec-extra libdvd-pkg - кодеки мультимедиа
+
+#Удаление cash и неиспользуемые зависимости:
+sudo apt autoclean
+sudo apt autoremove
+
+#Перезагрузка
+reboot
+
+#установка i3-wm:
+sudo apt install i3
+
+#Установка редактора Neovim:
+sudo snap install nvim --classic
+
+#Путь к i3 config:
+nvim ~/.config/i3/config
+
+#Установка обоев:
+sudo apt-get install feh
+--#Меняем в i3 config:
+   "exec_always feh -bg-fill path"
+
+#Прозрачность:
+sudo apt install compton
+--#Меняем в i3 config:
+   "exec_always --no-startup-id compton"
+
+#Установка Polybar:
+sudo apt install polybar
+--#Создаем отдельную ветку:
+   mkdir ~/.config/polybar
+
+--#Копируем конфигурационный файл:
+   sudo cp /usr/share/doc/polybar/config ~/.config/polybar
+
+--#Выведем содержимое папки:
+   ls -la ~/.config/polybar
+
+--#Меняем пользователя:
+   sudo chown [uname:ugroup] ~/.config/polybar/config
+
+--#Скрипт запуска:
+
+--#Создаем файл:
+   nvim ~/.config/polybar/launch.sh
+
+--#Копируем в него следующее:
+   #!/usr/bin/env bash
+
+   # Terminate already running bar instances
+   killall -q polybar
+   # If all your bars have ipc enabled, you can also use 
+   # polybar-msg cmd quit
+
+   # Launch bar1 and bar2
+   echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+   polybar example 2>&1 | tee -a /tmp/polybar1.log & disown
+
+   echo "Bars launched..."
+
+--#Разрешение на запуск:
+   sudo chmod +x .config/polybar/launch.sh
+
+--#Переходим в i3 config:
+   nvim .config/i3status/i3status.conf
+   Убираем старый Бар и прописываем запуск Polybar:
+   "exec_always --no-startup-id ~/.config/polybar/launch.sh"
+
+#Установка Rofi:
+sudo apt install rofi
+
+--#Открываем i3 config:
+   nvim ~/.config/i3/config
+   Закомментируем d-menu и прописываем Rofi:
+   bindsym $mod+d exec rofi -show run
+   
