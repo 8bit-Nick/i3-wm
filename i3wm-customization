@@ -1,0 +1,55 @@
+open new terminal - mod+Enter
+open dmenu - mod+D
+kill active window - mod+Shift+Q
+split a window vertically - mod+V
+split a window horizontally - mod+H
+change focus - mod+Left/Right/Up/Down
+move window - mod+Shift+Left/Right/Up/Down
+switch to another workspace - mod+0-9
+move focused container - mod+Shift+0-9
+toggle floating - mod+Shift+Space
+tabbed mode - mod+W
+stacking mode - mod+S
+default mode - mod+E
+reload the configuration file - mod+C
+restart i3wm - mod+Shift+R
+exit i3wm - mod+Shift+E
+
+pwd - path of the folder
+cd - change directory
+ls - view contents of a folder
+cat - used to list the contents of a file
+cp - copy files
+mv - move files
+mkdir - make a new folder
+rmdir - delete a folder
+rm - delete files
+touch - create a new file
+locate/find - find file
+df - report of disk space usage
+jobs - display all current tasks
+kill - manual deactivation of the program
+ping - check connectivity status
+uname - Unix Name
+top - display a list of running processes
+history - running history command
+zip/unzip - compress and decompress files
+
+Polybar:
+
+УСТАНОВКА:
+Arch:
+ mkdir ~/build
+ cd ~/build
+ git clone https://aur.archlinux.org/polybar.git
+ cd ~/build/polybar
+ makepkg -sri
+
+КОНФИГ:
+ В /home/username/.config/polybar положить конфиг из /usr/share/doc/polybar.
+
+rus config:
+polybar-config-rus.txt
+
+polybar themes:
+https://github.com/adi1090x/polybar-themes
